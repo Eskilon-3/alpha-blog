@@ -1,0 +1,11 @@
+<h1 class="text-center mt-4">Listing all books</h1>
+
+    <div class="flickr_pagination">
+        <%= will_paginate @books, :container => false %>
+    </div>
+
+  <%= render 'book' %>
+
+  <div class="flickr_pagination">
+        <%= will_paginate @books, :container => false %>
+    </div>
