@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
         def update
             if @user.update(user_params)
-                flash[:notice] = "Your account information was successfuly updated"
+                flash[:notice] = "As informações da sua conta foram atualizadas com sucesso."
                 redirect_to @user
             else
                 render 'edit'
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             session[:user_id] = @user.id
-            flash[:notice] = "Welcome to Book G #{@user.username}, you have successfuly signed up"
+            flash[:notice] = "Bem vindo ao Book G #{@user.username}, seu cadastro foi feito com sucesso."
             redirect_to books_path
             else
             render 'new'
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy
         session[:user_id] = nil if @user == current_user
-        flash[:notice] = "Account and all associated books successfully deleted"
+        flash[:notice] = "Conta e todos os livros associados deletados com sucesso."
         redirect_to books_path
     end
 
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
 
     def require_same_user
         if current_user != @user && !current_user.admin?
-        flash[:alert] = "You can only edit or delete your own account"
+        flash[:alert] = "Você só pode editar ou deletar a sua conta"
         redirect_to @user
         end
     end

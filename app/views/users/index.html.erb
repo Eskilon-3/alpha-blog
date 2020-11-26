@@ -14,20 +14,20 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title"><%= link_to gravatar_for(user, size: 150), user %></h5>
-                            <p class="card-text"><%= pluralize(user.books.count, "book")%></p>
-                            <%= link_to "View profile", user, class: "btn btn-outline-success"%>
+                            <p class="card-text"><%= pluralize(user.books.count, "livro")%></p>
+                            <%= link_to "Ver perfil", user, class: "btn btn-outline-success"%>
                             <% if logged_in%> 
                             <% if  user == current_user%>
-                               <%= link_to "Edit profile", edit_user_path(user), class: "btn btn-outline-info"%>
+                               <%= link_to "Editar pefil", edit_user_path(user), class: "btn btn-outline-info"%>
                             <% end %>
                             <% if current_user.admin?%>
-                                <%= link_to "Delete user", user_path(user), class: "btn btn-outline-danger", method: :delete,
-                                data: {confirm: "Are you sure you want to delete the user account and all associated books?"}%>
+                                <%= link_to "Deletar usuário", user_path(user), class: "btn btn-outline-danger", method: :delete,
+                                data: {confirm: "Tem certeza que deseja deletar a conta de usuário e todos os livros associados a ela?"}%>
                             <% end %>
                             <% end %>
                         </div>
                         <div class="card-footer text-muted">
-                            <small> Joined<%= time_ago_in_words(user.created_at)%> ago,
+                            <small> Entrou <%= time_ago_in_words(user.created_at)%> atrás,
                             </small>
                         </div>
                     </div>

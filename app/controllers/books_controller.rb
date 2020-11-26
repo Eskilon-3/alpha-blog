@@ -21,7 +21,7 @@ class BooksController < ApplicationController
         @book = Book.new(book_params)
         @book.user = current_user
         if @book.save
-            flash[:notice] = "Book was created successfuly."
+            flash[:notice] = "Livro criado com sucesso!"
             redirect_to @book
         else
             render 'new'
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
 
     def update
         if @book.update(book_params)
-            flash[:notice] = "Book was updated successfully."
+            flash[:notice] = "Livro atualizado com sucesso!"
             redirect_to @book
         else
             render 'edit'
@@ -53,7 +53,7 @@ class BooksController < ApplicationController
 
     def require_same_user
         if current_user != @book.user && !current_user.admin?
-            flash[:alert] = "You can only edit or delete your own book"
+            flash[:alert] = "Você só pode editar e deletar os seus próprios livros!"
             redirect_to @book
         end
     end
